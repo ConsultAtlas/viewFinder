@@ -17,9 +17,21 @@ and movie post images
 
 $(function(){
   // Listen for when the form submits
-  // When it submits, fet the value of the search box
-  // use $.get() to hit up the OMDB API
-  // loop over the results
+  $( ".searchBar" ).submit(function( event ) {
+
+    event.preventDefault();
+    // When it submits, get the value of the search box
+    var searchTerm = $('.form-control').val();
+    console.log(searchTerm);
+    alert( searchTerm );
+    // use $.get() to hit up the OMDB API
+    $.get( "http://www.omdbapi.com/?apikey=3430a78", { s: searchTerm } );
+    // loop over the results
+
+});
+
+
+
   // for each results, generate card HTML, incjecting movie info
   // add the card to the screen
 })
