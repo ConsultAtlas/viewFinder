@@ -12,3 +12,14 @@ and movie post images
   - search box should be an <input> and a <button>, aligned inline
   - search box results should be displayed as cards
   - use bootstrap cards and columns
+
+*/
+
+$(function(){
+  // Listen for when the form submits
+  // When it submits, fet the value of the search box
+  // use $.get() to hit up the OMDB API
+  // loop over the results
+  // for each results, generate card HTML, incjecting movie info
+  // add the card to the screen
+})
