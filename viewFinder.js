@@ -25,7 +25,18 @@ $(function(){
     console.log(searchTerm);
     alert( searchTerm );
     // use $.get() to hit up the OMDB API
-    $.get( "http://www.omdbapi.com/?apikey=3430a78", { s: searchTerm } );
+    $.get( "http://www.omdbapi.com/?apikey=3430a78", { s: searchTerm }, function(data) {
+      for (var i = 0; i < data.Search.length; i++) {
+        //make h2 with title
+        var card = '<div class="card" style="width: 20rem;"></div>';
+        var cardImage = '<img class="card-img-top" src="" alt="Card image cap">';
+        var cardBody = '<div class="card-body"></div>';
+        var cardTitle = '<h4 class="card-title"><span class="badge badge-secondary float-right"></span></h4>'
+        var cardAddButton = '<a href="#" class="btn btn-primary">Add!</a>'
+
+        $('')
+      }
+    } );
     // loop over the results
 
 });
