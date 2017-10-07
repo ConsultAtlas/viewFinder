@@ -63,8 +63,41 @@ $(function(){
   });
     // loop over the results
     $('.card-columns').on('click', '.addBtn', function(e){
-      console.log('They clicked add!');
+      var addButton = $(this);
+      var movieID = addButton.data('movie');
+      console.log(movieID);
+
+      var url = "http://www.omdbapi.com/?apikey=3430a78&i=" + movieID;
+      $.get(url, function(data){
+        var movieInstance = new Movie(data);
+        movieInstance.addToWatchList();
+      })
     });
+
+    // make the watchlist populate when the modal shows
+    $('.watchlist').on('shown.bs.modal', function(){
+      console.log('hello');
+      // fetch watchlist from local storage
+      var currentWatchlist = localStorage.getItem('watchlist')
+      // JSON.parse turns currentWatchlist back into an object
+      currentWatchlist = JSON.parse(currentWatchlist);
+
+      //check to see if there is anything currently in currentWatchlist
+      if (!currentWatchlist) {
+        currentWatchlist = {};
+      }
+      //turn our object into an array so that we can use the forEach loop on it
+      Object.keys(currentWatchlist).forEach(function(imdbID){
+        var currentMovieData = currentWatchlist[imdbID];
+
+        var movieInstance = new Movie(currentWatchlist);
+
+        var movieHTML = movieInstance.generateHTML();
+
+        $('.modal-body').append(movieHTML);
+      })
+
+    })
 });
 
 
