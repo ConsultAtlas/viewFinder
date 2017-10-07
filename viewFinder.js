@@ -28,7 +28,7 @@ $(function(){
           var cardBody = $('<div class="card-body"></div>');
           var cardTitle = $('<h4 class="card-title"></h4>');
           var cardBadge = $('<span class="badge badge-secondary float-right"></span>');
-          var cardAddButton = $('<a href="#" class="btn btn-primary">Add!</a>');
+          var cardAddButton = $('<a href="#" data-movie="'+ movie.imdbID +'" class="btn btn-primary addBtn">Add!</a>');
 
           if (movie.Poster == "N/A") {
             cardImage.attr('src', "No_Photo_Available.jpg");
@@ -46,6 +46,7 @@ $(function(){
           card.append(cardBody); // add the card body to the body
           // add the card to the screen
           $('.card-columns').append(card);
+
       });
   }
 
@@ -61,8 +62,41 @@ $(function(){
     })
   });
     // loop over the results
-
+    $('.card-columns').on('click', '.addBtn', function(e){
+      console.log('They clicked add!');
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  //Save to local storage prep
+  localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  JSON.parse(localStorage.getItem('watchlist'));
+
+    var watchlist = [
+      {
+        Title: "Dark Knight",
+        Poster: "img.jpg",
+        likeValue: 1
+      },
+      {
+        Title: "Happy Gilmore",
+        Poster: "img2.jpg",
+        likeValue: 1
+      },
+    ]
+*/
 
 
 
